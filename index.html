@@ -26,32 +26,47 @@
         Alpine.directive('include', async (el, { expression, modifiers }) => {
           try {
             // Fetch the content from the specified URL using the Fetch API
-            const response = await fetch(expression);
+            const response = await fetch(expression)
             
             if (modifiers.includes('markdown')) {
-              const content = await response.text();
+              const content = await response.text()
               // Parse the Markdown content using the marked library
-              const parsedContent = marked(content);
+              const parsedContent = marked(content)
 
               // Inject the parsed content into the element using x-html directive
-              el.innerHTML = parsedContent;
-              return;
+              el.innerHTML = parsedContent
+              return
             }
 
             if (modifiers.includes('json')) {
               // Parse the response to JSON
-              const jsonContent = await response.json();
+              const jsonContent = await response.json()
 
               // Inject the parsed content into the element using x-html directive
-              el.innerHTML = JSON.stringify(jsonContent);
-              return;
+              el.innerHTML = JSON.stringify(jsonContent)
+              return
             }
 
-            const content = await response.text();
+            // Get the pure text response
+            const content = await response.text()
             // Inject the fetched content into the element using x-html directive
-            el.innerHTML = content;
+            el.innerHTML = content
           } catch (error) {
-            console.error('Error fetching content:', error);
+            console.error('Error fetching content:', error)
+          }
+        })
+        // Register a new Alpine.js directive for fetching and storing JSON content
+        Alpine.directive('json', async (el, { expression, value }) => {
+          try {
+            // Fetch the content from the specified URL using the Fetch API
+            const response = await fetch(expression)
+            // Parse the response to JSON
+            const jsonContent = await response.json()
+
+            // Store the parsed JSON content in Alpine's store using the provided value name
+            Alpine.store(value, jsonContent)
+          } catch (error) {
+            console.error('Error fetching content:', error)
           }
         });
       })
@@ -67,8 +82,9 @@
 
     <main>
       <template x-route="/" template.preload="/pages/home.html"></template>
-      <template x-route="/blog" template.preload="/pages/blog.html"></template>
+      <template x-route="/blog/post/:slug" template="/pages/blog/comment.html"></template>
       <template x-route="/post|/blog/:slug" template="/pages/blog/post.html"></template>
+      <template x-route="/blog" template.preload="/pages/blog.html"></template>
       <template x-route="/about" template.preload="/pages/about.html"></template>
       <template x-route="/contact" template.preload="/pages/contact.html"></template>
       <template x-route.notfound>
