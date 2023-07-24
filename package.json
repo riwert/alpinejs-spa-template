@@ -4,11 +4,12 @@
   "author": "revert@revert.pl",
   "private": true,
   "scripts": {
-    "css": "postcss assets/styles/main.css -o assets/styles/main.min.css --verbose",
+    "css": "sass assets/styles/main.scss:assets/styles/main.css --watch & postcss assets/styles/main.css -o assets/styles/main.min.css --watch",
     "server-reload": "browser-sync start --config './browser-sync-config.js'",
-    "dev": "concurrently 'npm:css -- --watch' 'npm:server-reload'",
+    "dev": "concurrently 'npm:css --' 'npm:server-reload'",
     "build": "npm run css -- --env 'production'",
-    "format": "npx prettier ./**/*.html"
+    "format:html": "npx prettier ./**/*.html",
+    "format:scss": "npx prettier ./**/*.scss"
   },
   "browserslist": [
     "last 2 versions",
@@ -25,6 +26,7 @@
     "postcss-cli": "^10.1.0",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.1",
+    "sass": "^1.64.1",
     "tailwindcss": "^3.3.3"
   }
 }

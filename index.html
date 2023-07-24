@@ -11,70 +11,17 @@
     <link crossorigin="anonymous" href="/assets/styles/main.min.css" media="screen" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/atom-one-dark.min.css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
     <script>
       hljs.initHighlightingOnLoad()
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/marked@2.1.3/marked.min.js"></script>
     <script src="https://unpkg.com/@shaun/alpinejs-router@1.x.x/dist/cdn.min.js" defer></script>
     <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
-    <script>
-      document.addEventListener('alpine:init', () => {
-        // Register a new Alpine.js directive for AJAX content injection
-        Alpine.directive('include', async (el, { expression, modifiers }) => {
-          try {
-            // Fetch the content from the specified URL using the Fetch API
-            const response = await fetch(expression)
-            
-            if (modifiers.includes('markdown')) {
-              const content = await response.text()
-              // Parse the Markdown content using the marked library
-              const parsedContent = marked(content)
-
-              // Inject the parsed content into the element using x-html directive
-              el.innerHTML = parsedContent
-              return
-            }
-
-            if (modifiers.includes('json')) {
-              // Parse the response to JSON
-              const jsonContent = await response.json()
-
-              // Inject the parsed content into the element using x-html directive
-              el.innerHTML = JSON.stringify(jsonContent)
-              return
-            }
-
-            // Get the pure text response
-            const content = await response.text()
-            // Inject the fetched content into the element using x-html directive
-            el.innerHTML = content
-          } catch (error) {
-            console.error('Error fetching content:', error)
-          }
-        })
-        // Register a new Alpine.js directive for fetching and storing JSON content
-        Alpine.directive('json', async (el, { expression, value }) => {
-          try {
-            // Fetch the content from the specified URL using the Fetch API
-            const response = await fetch(expression)
-            // Parse the response to JSON
-            const jsonContent = await response.json()
-
-            // Store the parsed JSON content in Alpine's store using the provided value name
-            Alpine.store(value, jsonContent)
-          } catch (error) {
-            console.error('Error fetching content:', error)
-          }
-        });
-      })
-    </script>
-
   </head>
 
-  <body x-data="global()" x-init="themeInit()" :class="isMobileMenuOpen ? 'max-h-screen overflow-hidden relative' : ''" class="dark:bg-primary">
+  <body x-data="global()" x-init="themeInit()" :class="isMobileMenuOpen ? 'max-h-screen overflow-hidden relative' : ''" class="dark:bg-primary text-primary dark:text-white">
 
     <header>
       <template x-route="/|/:page" template.preload="/partials/header.html"></template>
@@ -84,9 +31,9 @@
       <template x-route="/" template.preload="/pages/home.html"></template>
       <template x-route="/blog/post/:slug" template="/pages/blog/comment.html"></template>
       <template x-route="/post|/blog/:slug" template="/pages/blog/post.html"></template>
-      <template x-route="/blog" template.preload="/pages/blog.html"></template>
-      <template x-route="/about" template.preload="/pages/about.html"></template>
-      <template x-route="/contact" template.preload="/pages/contact.html"></template>
+      <template x-route="/blog" template="/pages/blog.html"></template>
+      <template x-route="/about" template="/pages/about.html"></template>
+      <template x-route="/contact" template="/pages/contact.html"></template>
       <template x-route.notfound>
         <div>
           Error 404 not found
@@ -99,5 +46,6 @@
     </footer>
 
     <script src="/assets/js/main.js"></script>
+
   </body>
 </html>

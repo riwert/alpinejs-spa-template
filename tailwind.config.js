@@ -2,6 +2,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: [
+    "./**/*.css",
     "./**/*.html",
   ],
   safelist: [
