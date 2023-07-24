@@ -1,3 +1,3 @@
-### Marked parser example from content file
+### Marked parser for a md file content
 
-This should be parsed as **markdown** on the fly from included dynamically file content.
+This should be parsed as **markdown** on the fly as content included dynamically from a file.

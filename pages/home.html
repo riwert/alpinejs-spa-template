@@ -42,7 +42,7 @@
       <section x-include="components/hello-world.html" class="border-b border-grey-lighter py-8"></section>
       <section x-include.markdown="content/welcome.md" class="border-b border-grey-lighter py-8"></section>
       <section x-json:example="json/example.json" class="border-b border-grey-lighter py-8">
-        <h2 class="mb-3 font-body text-3xl font-semibold text-primary dark:text-white">JSON file read example</h2>
+        <h2 class="mb-3 font-body text-3xl font-semibold text-primary dark:text-white">JSON file content read and store to usable value</h2>
         <p><strong x-text="$store.example?.menu.value + ':'"></strong></p>
         <ul x-show="$store.example" class="list-disc pl-5">
           <template x-for="(item, index) in $store.example?.menu.popup.menuitem" :key="index">
@@ -54,7 +54,7 @@
         </ul>
       </section>
       <section x-json:users="https://jsonplaceholder.typicode.com/users" class="border-b border-grey-lighter py-8">
-        <h2 class="mb-3 font-body text-3xl font-semibold text-primary dark:text-white">JSON file read and store from API response</h2>
+        <h2 class="mb-3 font-body text-3xl font-semibold text-primary dark:text-white">JSON API response fetch and store to usable value</h2>
         <ul x-show="$store.users" class="list-disc pl-5">
           <template x-for="(user, index) in $store.users" :key="index">
             <li>
