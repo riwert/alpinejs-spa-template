@@ -1,17 +1,30 @@
 <div>
 
-  <template x-teleport="head">
-    <title>Blog | AlpineJS SPA Template</title>
-    <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
-    <meta property="og:title" content="Blog | AlpineJS SPA Template" />
-    <meta property="og:site_name" content="AlpineJS SPA Template" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:url" content="https://alpinejs-spa.netlify.com/blog" />
-    <meta property="og:image" content="https://alpinejs-spa.netlify.com/assets/img/social.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@tailwindmade" />
-    <link rel="canonical" href="https://alpinejs-spa.netlify.com/blog" />
-  </template>
+  <script x-data x-head.json type="application/json">
+  {
+    "title": "Blog | AlpineJS SPA",
+    "meta": [
+      {
+        "name": "description",
+        "content": "Blog for an Alpine.js template example"
+      },
+      {
+        "name": "og:title",
+        "content": "Blog | AlpineJS SPA"
+      },
+      {
+        "name": "og:url",
+        "content": "https://alpinejs-spa.netlify.app/blog"
+      }
+    ],
+    "link": [
+      {
+        "rel": "canonical",
+        "href": "https://alpinejs-spa.netlify.app/blog"
+      }
+    ]
+  }
+  </script>
 
   <div class="container mx-auto">
     <div class="py-16 lg:py-20">

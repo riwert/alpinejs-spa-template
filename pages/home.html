@@ -1,17 +1,30 @@
 <div>
 
-  <template x-teleport="head">
-    <title>Homepage | AlpineJS SPA Template</title>
-    <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
-    <meta property="og:title" content="Homepage | AlpineJS SPA Template" />
-    <meta property="og:site_name" content="AlpineJS SPA Template" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:url" content="https://alpinejs-spa.netlify.com/" />
-    <meta property="og:image" content="https://alpinejs-spa.netlify.com/assets/img/social.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@tailwindmade" />
-    <link rel="canonical" href="https://alpinejs-spa.netlify.com/" />
-  </template>
+  <script x-data x-head.json type="application/json">
+  {
+    "title": "AlpineJS SPA structure example",
+    "meta": [
+      {
+        "name": "description",
+        "content": "An Alpine.js template with SPA-like structure for easy development."
+      },
+      {
+        "name": "og:title",
+        "content": "AlpineJS SPA structure example"
+      },
+      {
+        "name": "og:url",
+        "content": "https://alpinejs-spa.netlify.app/"
+      }
+    ],
+    "link": [
+      {
+        "rel": "canonical",
+        "href": "https://alpinejs-spa.netlify.app/"
+      }
+    ]
+  }
+  </script>
 
   <div class="container mx-auto">
     <div class="border-b border-grey-lighter py-16 lg:py-20">
@@ -82,14 +95,14 @@
 
         <div class="flex">
           <input x-model.debounce="filterPosts" x-effect="filteredPosts = filterPosts ? posts.filter(post => post.title.indexOf(filterPosts) > -1 || post.body.indexOf(filterPosts) > -1) : posts" type="text" placeholder="Filter posts by title or body text" class="w-full border border-primary bg-grey-lightest px-5 py-4 font-body font-light text-primary placeholder-primary transition-colors focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary dark:border-secondary sm:w-2/3" />
-          <select x-model="postsLimit" @change="posts = await (await fetch('https://jsonplaceholder.typicode.com/posts?_page=1&_limit='+postsLimit+'&_sort=id&_order='+postsOrder)).json()" class="w-20 pr-6 bg-grey-lightest border border-primary text-gray-900 dark:text-primary text-sm border-l-0 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary dark:border-secondary block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <select x-model="postsLimit" @change="posts = await (await fetch('https://jsonplaceholder.typicode.com/posts?_page=1&_limit='+postsLimit+'&_sort=id&_order='+postsOrder)).json()" class="w-20 pr-6 bg-grey-lightest border border-primary text-gray-900 dark:text-primary text-sm border-l-0 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary dark:border-secondary block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
             <option selected disabled>limit</option>
             <option>3</option>
             <option>5</option>
             <option>10</option>
             <option>100</option>
           </select>
-          <select x-model="postsOrder" @change="posts = await (await fetch('https://jsonplaceholder.typicode.com/posts?_page=1&_limit='+postsLimit+'&_sort=id&_order='+postsOrder)).json()" class="w-20 pr-6 bg-grey-lightest border border-primary text-gray-900 dark:text-primary text-sm border-l-0 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary dark:border-secondary block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <select x-model="postsOrder" @change="posts = await (await fetch('https://jsonplaceholder.typicode.com/posts?_page=1&_limit='+postsLimit+'&_sort=id&_order='+postsOrder)).json()" class="w-20 pr-6 bg-grey-lightest border border-primary text-gray-900 dark:text-primary text-sm border-l-0 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary dark:border-secondary block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
               <option selected disabled>order</option>
               <option>asc</option>
               <option>desc</option>
@@ -207,4 +220,5 @@
       </div>
     </div>
   </div>
+
 </div>

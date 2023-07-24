@@ -1,6 +1,8 @@
 # AlpineJS SPA
 
-A simple sample [alpinejs](https://github.com/alpinejs/alpine) structured html files with [alpinejs-router](https://github.com/shaunlee/alpinejs-router) and [tailwind atlas theme](https://www.tailwindawesome.com/resources/atlas) working like a SPA.
+An Alpine.js template with SPA-like structure for easy development.
+
+Includes [alpinejs](https://github.com/alpinejs/alpine) library, structured html files with [alpinejs-router](https://github.com/shaunlee/alpinejs-router) and [alpinejs-head](https://github.com/markmead/alpinejs-head) for meta, based on [tailwind atlas theme](https://www.tailwindawesome.com/resources/atlas) working like a SPA.
 
 ## Structure:
 |No |Folder            |Description|
