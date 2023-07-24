@@ -40,13 +40,13 @@ html {
 }
 
 h1 {
-  @apply pb-3 font-body text-4xl md:text-5xl lg:text-6xl font-bold text-primary dark:text-white;
+  @apply font-body text-4xl md:text-5xl lg:text-6xl font-bold text-primary dark:text-white;
 }
 
 h2 {
-  @apply pb-3 font-body text-3xl md:text-4xl lg:text-5xl font-semibold text-primary dark:text-white;
+  @apply font-body text-3xl md:text-4xl lg:text-5xl font-semibold text-primary dark:text-white;
 }
 
 h3 {
-  @apply pb-3 font-body text-2xl md:text-3xl lg:text-4xl font-semibold text-primary dark:text-white;
+  @apply font-body text-2xl md:text-3xl lg:text-4xl font-semibold text-primary dark:text-white;
 }
