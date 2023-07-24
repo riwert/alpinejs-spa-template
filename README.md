@@ -26,9 +26,13 @@ A simple sample [alpinejs](https://github.com/alpinejs/alpine) structured html f
 <template x-route="/somewhere" template="/somewhere.html"></template>
 ```
 
-## Custom directive:
+## Custom directives
 - ```x-include``` - lets include files from file and inject response inside directive's element:
   - default without modifier returns file content as text/html,
   - ```.markdown``` modifier to parse markdown file content to html,
 - ```x-json:value``` - fetch JSON file or API response and store it to named :&lt;value&gt; after colon, example:
   -  ```x-json:example="json/example.json"``` so the response from a file content will be available in $store.example in a template.
+
+
+## Warning
+It's worth to notice that the SPA mode like this is not the best for SEO.
