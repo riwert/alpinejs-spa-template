@@ -5,9 +5,10 @@
   "private": true,
   "scripts": {
     "css": "sass assets/styles/main.scss:assets/styles/main.css --watch & postcss assets/styles/main.css -o assets/styles/main.min.css --watch",
+    "css:prod": "sass assets/styles/main.scss:assets/styles/main.css & postcss assets/styles/main.css -o assets/styles/main.min.css",
     "server-reload": "browser-sync start --config './browser-sync-config.js'",
     "dev": "concurrently 'npm:css --' 'npm:server-reload'",
-    "build": "npm run css -- --env 'production'",
+    "build": "npm run css:prod -- --env 'production'",
     "format:html": "npx prettier ./**/*.html",
     "format:scss": "npx prettier ./**/*.scss"
   },
