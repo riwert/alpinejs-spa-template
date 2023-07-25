@@ -46,12 +46,12 @@
     </header>
 
     <main>
-      <template x-route="/" template.preload="/pages/home.html"></template>
-      <template x-route="/blog/post/:slug" template.preload="/pages/blog/comment.html"></template>
-      <template x-route="/post|/blog/:slug" template.preload="/pages/blog/post.html"></template>
-      <template x-route="/blog" template.preload="/pages/blog.html"></template>
-      <template x-route="/about" template.preload="/pages/about.html"></template>
-      <template x-route="/contact" template.preload="/pages/contact.html"></template>
+      <template x-route="/" template="/pages/home.html"></template>
+      <template x-route="/blog/comment|/blog/comment/:slug" template="/pages/blog/comment.html"></template>
+      <template x-route="/blog/:slug" template="/pages/blog/post.html"></template>
+      <template x-route="/blog" template="/pages/blog.html"></template>
+      <template x-route="/about" template="/pages/about.html"></template>
+      <template x-route="/contact" template="/pages/contact.html"></template>
     </main>
 
     <footer>

@@ -8,7 +8,7 @@
     </a>
   </div>
 
-  <div x-data="{ posts: [], filteredPosts: [], filterPosts: '', postsOrder: 'desc', postsLimit: 5 }" x-init="posts = await (await fetch('https://jsonplaceholder.typicode.com/posts?_page=1&_limit=3&_sort=id&_order='+postsOrder)).json()" class="pt-8">
+  <div x-data="{ posts: [], filteredPosts: [], filterPosts: '', postsOrder: 'desc', postsLimit: 5 }" x-init="posts = await (await fetch('https://jsonplaceholder.typicode.com/posts?_page=1&_limit='+postsLimit+'&_sort=id&_order='+postsOrder)).json()" class="pt-8">
 
     <div class="flex">
       <input x-model.debounce="filterPosts" x-effect="filteredPosts = filterPosts ? posts.filter(post => post.title.indexOf(filterPosts) > -1 || post.body.indexOf(filterPosts) > -1) : posts" type="text" placeholder="Filter posts by title or body text" class="w-full border border-primary bg-grey-lightest px-5 py-4 font-body font-light text-primary placeholder-primary transition-colors focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary dark:border-secondary sm:w-2/3" />
