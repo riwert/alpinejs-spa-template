@@ -1,6 +1,6 @@
 <div>
   <div class="flex items-center pb-6">
-    <img src="/assets/img/icon-story.png" alt="icon story" />
+    <img src="/assets/img/icon-post.png" alt="icon post" />
     <h3 class="ml-3 font-body text-2xl font-semibold text-primary dark:text-white">My posts</h3>
     <a x-link href="/blog" class="flex items-center pl-10 font-body italic text-green transition-colors hover:text-secondary dark:text-green-light dark:hover:text-secondary">
       See more
@@ -8,39 +8,6 @@
     </a>
   </div>
 
-  <div x-data="{ posts: [], filteredPosts: [], filterPosts: '', postsOrder: 'desc', postsLimit: 5 }" x-init="posts = await (await fetch('https://jsonplaceholder.typicode.com/posts?_page=1&_limit='+postsLimit+'&_sort=id&_order='+postsOrder)).json()" class="pt-8">
+  <section x-cloak x-include="components/post-list.html"></section>
 
-    <div class="flex">
-      <input x-model.debounce="filterPosts" x-effect="filteredPosts = filterPosts ? posts.filter(post => post.title.indexOf(filterPosts) > -1 || post.body.indexOf(filterPosts) > -1) : posts" type="text" placeholder="Filter posts by title or body text" class="w-full border border-primary bg-grey-lightest px-5 py-4 font-body font-light text-primary placeholder-primary transition-colors focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary dark:border-secondary sm:w-2/3" />
-      <select x-model="postsLimit" @change="posts = await (await fetch('https://jsonplaceholder.typicode.com/posts?_page=1&_limit='+postsLimit+'&_sort=id&_order='+postsOrder)).json()" class="w-20 pr-6 bg-grey-lightest border border-primary text-gray-900 dark:text-primary text-sm border-l-0 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary dark:border-secondary block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-        <option selected disabled>limit</option>
-        <option>5</option>
-        <option>10</option>
-        <option>100</option>
-      </select>
-      <select x-model="postsOrder" @change="posts = await (await fetch('https://jsonplaceholder.typicode.com/posts?_page=1&_limit='+postsLimit+'&_sort=id&_order='+postsOrder)).json()" class="w-20 pr-6 bg-grey-lightest border border-primary text-gray-900 dark:text-primary text-sm border-l-0 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary dark:border-secondary block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option selected disabled>order</option>
-          <option>asc</option>
-          <option>desc</option>
-      </select>
-    </div>
-
-    <div class="pt-5">
-      Posts: <span x-text="filteredPosts.length"></span>
-    </div>
-
-    <template x-for="post in filteredPosts" :key="post.id">
-      <article class="border-b border-grey-lighter pt-10 pb-8">
-        <span class="mb-4 inline-block rounded-full px-2 py-1 font-body text-sm" :class="{'bg-green-light text-green': post.id <= 25, 'bg-grey-light text-blue-dark': post.id > 25 && post.id <= 50, 'bg-blue-light text-blue': post.id > 50 && post.id <= 75, 'bg-yellow-light text-yellow-dark': post.id > 75}">JSON API post <span x-text="post.id"></span></span>
-        <a x-link :href="'/blog/'+post.id" class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary" x-text="post.title"></a>
-        <p x-text="post.body"></p>
-        <div class="flex items-center pt-4">
-          <p class="pr-2 font-body font-light text-primary dark:text-white">July 19, 2020</p>
-          <span class="font-body text-grey dark:text-white">//</span>
-          <p class="pl-2 font-body font-light text-primary dark:text-white">4 min read</p>
-        </div>
-      </article>
-    </template>
-
-  </div>
 </div>
