@@ -70,6 +70,4 @@ Includes **[alpinejs](https://github.com/alpinejs/alpine)** library, structured 
 ```
 
 ## Disclaimer
-It's worth to notice that SPA mode like this is not the best for SEO.
-
-Maybe some SSR wrapper would work better with it for SEO.
+It's worth noticing that an SPA mode like this may not be the best for SEO. Perhaps using an SSR wrapper would work better for SEO.
