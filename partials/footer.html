@@ -1,12 +1,16 @@
 <div class="container mx-auto">
-  <div class="flex flex-col items-center justify-between border-t border-grey-lighter py-10 sm:flex-row sm:py-12">
-    <div class="mr-auto flex flex-col items-center sm:flex-row">
+
+  <section x-cloak x-include="components/subscribe-box.html" class="border-t border-grey-lighter pt-10 sm:pt-12"></section>
+
+  <div class="flex items-center justify-between border-t border-grey-lighter py-10 sm:py-12">
+    <div class="mr-auto flex flex-col sm:flex-row items-center">
       <a x-link href="/" class="mr-auto sm:mr-6">
         <img src="/assets/img/logo-alpinejs.svg" alt="AlpineJS logo" class="h-8" />
       </a>
       <p class="pt-5 font-body font-light text-primary dark:text-white sm:pt-0">&copy;2023 John Doe.</p>
     </div>
-    <div class="mr-auto flex items-center pt-5 sm:mr-0 sm:pt-0">
+
+    <div class="ml-auto flex justify-end items-center pt-5 sm:mr-0 sm:pt-0">
       <a href="https://github.com/" title="Open GitHub" target="_blank" rel="noopenner">
         <i class="text-4xl text-primary dark:text-white pl-5 hover:text-secondary dark:hover:text-secondary transition-colors bx bxl-github"></i>
       </a>
@@ -16,4 +20,5 @@
       </a>
     </div>
   </div>
+
 </div>

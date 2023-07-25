@@ -1,0 +1,60 @@
+<div>
+  <div class="flex items-center pb-6">
+    <img src="/assets/img/icon-project.png" alt="icon story" />
+    <h3 class="ml-3 font-body text-2xl font-semibold text-primary dark:text-white">My Projects</h3>
+  </div>
+  <div x-data="{ comments: [] }" x-init="comments = await (await fetch('/json/comments.json')).json()">
+
+    <template x-for="comment in comments">
+      <a x-link :href="'/blog/post/'+comment.id" class="mb-6 flex items-center justify-between border border-grey-lighter px-4 py-4 sm:px-6">
+        <span class="w-9/10 pr-8">
+          <h4 class="font-body text-lg font-semibold text-primary dark:text-white" x-text="comment.name"></h4>
+          <p class="font-body font-light text-primary dark:text-white" x-text="comment.body"></p>
+        </span>
+        <span class="w-1/10">
+          <img src="/assets/img/chevron-right.png" class="mx-auto" alt="chevron right" />
+        </span>
+      </a>
+    </template>
+
+    <a x-link href=" / " class="mb-6 flex items-center justify-between border border-grey-lighter px-4 py-4 sm:px-6">
+      <span class="w-9/10 pr-8">
+        <h4 class="font-body text-lg font-semibold text-primary dark:text-white">TailwindCSS</h4>
+        <p class="font-body font-light text-primary dark:text-white">Rapidly build modern websites without ever leaving your HTML.</p>
+      </span>
+      <span class="w-1/10">
+        <img src="/assets/img/chevron-right.png" class="mx-auto" alt="chevron right" />
+      </span>
+    </a>
+
+    <a x-link href=" / " class="mb-6 flex items-center justify-between border border-grey-lighter px-4 py-4 sm:px-6">
+      <span class="w-9/10 pr-8">
+        <h4 class="font-body text-lg font-semibold text-primary dark:text-white">Maizzle</h4>
+        <p class="font-body font-light text-primary dark:text-white">Framework for Rapid Email Prototyping</p>
+      </span>
+      <span class="w-1/10">
+        <img src="/assets/img/chevron-right.png" class="mx-auto" alt="chevron right" />
+      </span>
+    </a>
+
+    <a x-link href=" / " class="mb-6 flex items-center justify-between border border-grey-lighter px-4 py-4 sm:px-6">
+      <span class="w-9/10 pr-8">
+        <h4 class="font-body text-lg font-semibold text-primary dark:text-white">Alpine.js</h4>
+        <p class="font-body font-light text-primary dark:text-white">Think of it like Tailwind for JavaScript.</p>
+      </span>
+      <span class="w-1/10">
+        <img src="/assets/img/chevron-right.png" class="mx-auto" alt="chevron right" />
+      </span>
+    </a>
+
+    <a x-link href=" / " class="mb-6 flex items-center justify-between border border-grey-lighter px-4 py-4 sm:px-6">
+      <span class="w-9/10 pr-8">
+        <h4 class="font-body text-lg font-semibold text-primary dark:text-white">PostCSS</h4>
+        <p class="font-body font-light text-primary dark:text-white">A tool for transforming CSS with JavaScript</p>
+      </span>
+      <span class="w-1/10">
+        <img src="/assets/img/chevron-right.png" class="mx-auto" alt="chevron right" />
+      </span>
+    </a>
+  </div>
+</div>

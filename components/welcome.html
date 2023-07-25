@@ -1,0 +1,11 @@
+<div>
+  <h1 class="flex items-center gap-3 pt-3 font-body text-4xl font-semibold text-primary dark:text-white md:text-5xl lg:text-6xl">
+    <img src="/assets/img/author.png" class="h-16 w-16" alt="author" />
+    Hi, I’m John Doe.
+  </h1>
+  <p class="pt-3 font-body text-xl font-light text-primary dark:text-white">A software engineer and open-source advocate enjoying the sunny life in Barcelona, Spain.</p>
+  <div x-data="{ greeting: 'Hello!', showGreeting: false }" class="mt-12 flex flex-wrap items-center gap-5">
+    <button @click="showGreeting = ! showGreeting" class="shrink-0 block bg-secondary px-10 py-4 text-center font-body text-xl font-semibold text-white transition-colors hover:bg-green sm:inline-block sm:text-left sm:text-2xl"> Say Hello! </button>
+    <span x-show="showGreeting" x-text="greeting" x-transition class="text-5xl"></span>
+  </div>
+</div>

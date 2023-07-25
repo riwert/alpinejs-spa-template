@@ -1,0 +1,80 @@
+<div>
+  <div class="flex items-center pb-6">
+    <img src="/assets/img/icon-story.png" alt="icon story" />
+    <h3 class="ml-3 font-body text-2xl font-semibold text-primary dark:text-white">Blog</h3>
+    <a x-link href="/blog" class="flex items-center pl-10 font-body italic text-green transition-colors hover:text-secondary dark:text-green-light dark:hover:text-secondary">
+      All posts
+      <img src="/assets/img/long-arrow-right.png" class="ml-3" alt="arrow right" />
+    </a>
+  </div>
+
+  <div x-data="{ posts: [], filteredPosts: [], filterPosts: '', postsOrder: 'desc', postsLimit: 3 }" x-init="posts = await (await fetch('https://jsonplaceholder.typicode.com/posts?_page=1&_limit=3&_sort=id&_order='+postsOrder)).json()" class="pt-8">
+
+    <div class="flex">
+      <input x-model.debounce="filterPosts" x-effect="filteredPosts = filterPosts ? posts.filter(post => post.title.indexOf(filterPosts) > -1 || post.body.indexOf(filterPosts) > -1) : posts" type="text" placeholder="Filter posts by title or body text" class="w-full border border-primary bg-grey-lightest px-5 py-4 font-body font-light text-primary placeholder-primary transition-colors focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary dark:border-secondary sm:w-2/3" />
+      <select x-model="postsLimit" @change="posts = await (await fetch('https://jsonplaceholder.typicode.com/posts?_page=1&_limit='+postsLimit+'&_sort=id&_order='+postsOrder)).json()" class="w-20 pr-6 bg-grey-lightest border border-primary text-gray-900 dark:text-primary text-sm border-l-0 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary dark:border-secondary block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option selected disabled>limit</option>
+        <option>3</option>
+        <option>5</option>
+        <option>10</option>
+        <option>100</option>
+      </select>
+      <select x-model="postsOrder" @change="posts = await (await fetch('https://jsonplaceholder.typicode.com/posts?_page=1&_limit='+postsLimit+'&_sort=id&_order='+postsOrder)).json()" class="w-20 pr-6 bg-grey-lightest border border-primary text-gray-900 dark:text-primary text-sm border-l-0 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary dark:border-secondary block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          <option selected disabled>order</option>
+          <option>asc</option>
+          <option>desc</option>
+      </select>
+    </div>
+
+    <div class="pt-5">
+      Posts: <span x-text="filteredPosts.length"></span> + 3 static ones
+    </div>
+
+    <template x-for="post in filteredPosts" :key="post.id">
+      <article class="border-b border-grey-lighter pt-10 pb-8">
+        <span class="mb-4 inline-block rounded-full bg-green-light px-2 py-1 font-body text-sm text-green">JSON API</span>
+        <a x-link :href="'/blog/'+post.id" class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary" x-text="post.title"></a>
+        <p x-text="post.body"></p>
+        <div class="flex items-center pt-4">
+          <p class="pr-2 font-body font-light text-primary dark:text-white">July 19, 2020</p>
+          <span class="font-body text-grey dark:text-white">//</span>
+          <p class="pl-2 font-body font-light text-primary dark:text-white">4 min read</p>
+        </div>
+      </article>
+    </template>
+
+    <article class="border-b border-grey-lighter pt-10 pb-8">
+      <span class="mb-4 inline-block rounded-full bg-green-light px-2 py-1 font-body text-sm text-green">category</span>
+      <a x-link href="/blog/testing123" class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary">Quis hendrerit dolor magna eget est lorem ipsum dolor sit</a>
+      <div class="flex items-center pt-4">
+        <p class="pr-2 font-body font-light text-primary dark:text-white">July 19, 2020</p>
+        <span class="font-body text-grey dark:text-white">//</span>
+        <p class="pl-2 font-body font-light text-primary dark:text-white">4 min read</p>
+      </div>
+    </article>
+
+    <article class="border-b border-grey-lighter pt-10 pb-8">
+      <div class="flex items-center">
+        <span class="mb-4 inline-block rounded-full bg-grey-light px-2 py-1 font-body text-sm text-blue-dark">category</span>
+        <span class="mb-4 ml-4 inline-block rounded-full bg-yellow-light px-2 py-1 font-body text-sm text-yellow-dark">category</span>
+      </div>
+      <a x-link href="/blog/post" class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary">Senectus et netus et malesuada fames ac turpis egestas integer</a>
+      <div class="flex items-center pt-4">
+        <p class="pr-2 font-body font-light text-primary dark:text-white">June 30, 2020</p>
+        <span class="font-body text-grey dark:text-white">//</span>
+        <p class="pl-2 font-body font-light text-primary dark:text-white">5 min read</p>
+      </div>
+    </article>
+
+    <article class="border-b border-grey-lighter pt-10 pb-8">
+      <span class="mb-4 inline-block rounded-full bg-blue-light px-2 py-1 font-body text-sm text-blue">category</span>
+      <a x-link href="/post" class="block font-body text-lg font-semibold text-primary transition-colors hover:text-green dark:text-white dark:hover:text-secondary">Vulputate ut pharetra sit amet aliquam id diam maecenas ultricies</a>
+      <div class="flex items-center pt-4">
+        <p class="pr-2 font-body font-light text-primary dark:text-white">June 26, 2020</p>
+        <span class="font-body text-grey dark:text-white">//</span>
+        <p class="pl-2 font-body font-light text-primary dark:text-white">3 min read</p>
+      </div>
+    </article>
+
+  </div>
+</div>
