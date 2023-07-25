@@ -2,45 +2,51 @@
 
   <navbar class="block container mx-auto">
     <nav class="flex items-center justify-between py-6 lg:py-10" x-cloak>
-      <a x-link href="/" class="flex items-center">
+      <a x-link href="/" title="Go to Home" class="flex items-center">
         <img src="/assets/img/logo-alpinejs.svg" alt="logo" class="h-10 mr-3" />
         <p class="font-body text-xl lg:text-2xl font-bold text-primary dark:text-white lg:block">John Doe</p>
       </a>
       <div class="flex items-center lg:hidden">
-        <i class="bx mr-8 cursor-pointer text-3xl text-primary dark:text-white" @click="themeSwitch()" :class="isDarkMode ? 'bxs-moon' : 'bxs-sun'"></i>
+        <button @click="themeSwitch()" :title="'Switch mode to '+(isDarkMode ? 'light' : 'dark')" class="mr-8">
+          <i class="bx cursor-pointer text-3xl text-primary dark:text-white" :class="isDarkMode ? 'bxs-moon' : 'bxs-sun'"></i>
+        </button>
 
-        <svg width="24" height="15" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" @click="isMobileMenuOpen = !isMobileMenuOpen" class="fill-current cursor-pointer text-primary dark:text-white">
-          <g fill-rule="evenodd">
-            <rect width="24" height="3" rx="1.5" />
-            <rect x="8" y="6" width="16" height="3" rx="1.5" />
-            <rect x="4" y="12" width="20" height="3" rx="1.5" />
-          </g>
-        </svg>
+        <button @click="isMobileMenuOpen = !isMobileMenuOpen" title="Toggle menu">
+          <svg width="24" height="15" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" class="fill-current cursor-pointer text-primary dark:text-white">
+            <g fill-rule="evenodd">
+              <rect width="24" height="3" rx="1.5" />
+              <rect x="8" y="6" width="16" height="3" rx="1.5" />
+              <rect x="4" y="12" width="20" height="3" rx="1.5" />
+            </g>
+          </svg>
+        </button>
       </div>
       <div class="hidden lg:block">
         <ul class="flex items-center">
           <li class="group relative mr-6 mb-1">
-            <div class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"></div>
-            <a x-link href="/" class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary">Home</a>
+            <div :class="{'h-2 bg-yellow': $router.is('/')}" class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"></div>
+            <a x-link :class="{'text-secondary': $router.is('/'), 'text-primary dark:text-white': $router.not('/')}" href="/" class="relative z-30 block px-2 font-body font-medium text-lg transition-colors group-hover:text-green dark:group-hover:text-secondary">Home</a>
           </li>
 
           <li class="group relative mr-6 mb-1">
-            <div class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"></div>
-            <a x-link href="/about" class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary">About</a>
+            <div :class="{'h-2 bg-yellow': $router.is('/about')}" class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"></div>
+            <a x-link :class="{'text-secondary': $router.is('/about'), 'text-primary dark:text-white': $router.not('/about')}" href="/about" class="relative z-30 block px-2 font-body font-medium text-lg transition-colors group-hover:text-green dark:group-hover:text-secondary">About</a>
           </li>
 
           <li class="group relative mr-6 mb-1">
-            <div class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"></div>
-            <a x-link href="/blog" class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary">Blog</a>
+            <div :class="{'h-2 bg-yellow': $router.is('/blog')}" class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"></div>
+            <a x-link :class="{'text-secondary': $router.is('/blog'), 'text-primary dark:text-white': $router.not('/blog')}" href="/blog" class="relative z-30 block px-2 font-body font-medium text-lg transition-colors group-hover:text-green dark:group-hover:text-secondary">Blog</a>
           </li>
 
           <li class="group relative mr-6 mb-1">
-            <div class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"></div>
-            <a x-link href="/contact" class="relative z-30 block px-2 font-body text-lg font-medium text-primary transition-colors group-hover:text-green dark:text-white dark:group-hover:text-secondary">Contact</a>
+            <div :class="{'h-2 bg-yellow': $router.is('/contact')}" class="absolute left-0 bottom-0 z-20 h-0 w-full opacity-75 transition-all group-hover:h-2 group-hover:bg-yellow"></div>
+            <a x-link :class="{'text-secondary': $router.is('/contact'), 'text-primary dark:text-white': $router.not('/contact')}" href="/contact" class="relative z-30 block px-2 font-body font-medium text-lg transition-colors group-hover:text-green dark:group-hover:text-secondary">Contact</a>
           </li>
 
           <li>
-            <i class="bx cursor-pointer text-3xl text-primary dark:text-white" @click="themeSwitch()" :class="isDarkMode ? 'bxs-moon' : 'bxs-sun'"></i>
+            <button @click="themeSwitch()" :title="'Switch mode to '+(isDarkMode ? 'light' : 'dark')">
+              <i class="bx cursor-pointer text-3xl text-primary dark:text-white" :class="isDarkMode ? 'bxs-moon' : 'bxs-sun'"></i>
+            </button>
           </li>
         </ul>
       </div>
@@ -49,22 +55,24 @@
 
   <aside class="pointer-events-none fixed inset-0 z-50 flex bg-black bg-opacity-80 opacity-0 transition-opacity lg:hidden" :class="isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : ''">
     <nav class="ml-auto bg-green p-4 transition-width transition-slowest ease" :class="isMobileMenuOpen ? 'w-2/3 md:w-1/3' : 'w-0'">
-      <i class="cursor-pointer bx bx-x absolute top-0 right-0 mt-4 mr-4 text-4xl text-white" @click="isMobileMenuOpen = false"></i>
+      <button @click="isMobileMenuOpen = false" title="Close menu">
+        <i class="cursor-pointer bx bx-x absolute top-0 right-0 mt-4 mr-4 text-4xl text-white"></i>
+      </button>
       <ul class="mt-8 flex flex-col">
         <li class="py-2">
-          <a x-link @click="isMobileMenuOpen = false" href="/" class="mb-3 block px-2 font-body text-lg font-medium text-white">Home</a>
+          <a x-link :class="{'text-secondary': $router.is('/'), 'text-white': $router.not('/')}" href="/" @click="isMobileMenuOpen = false" class="mb-3 block px-2 font-body text-lg font-medium">Home</a>
         </li>
 
         <li class="py-2">
-          <a x-link @click="isMobileMenuOpen = false" href="/about" class="mb-3 block px-2 font-body text-lg font-medium text-white">About</a>
+          <a x-link :class="{'text-secondary': $router.is('/about'), 'text-white': $router.not('/about')}" href="/about" @click="isMobileMenuOpen = false" class="mb-3 block px-2 font-body text-lg font-medium">About</a>
         </li>
 
         <li class="py-2">
-          <a x-link @click="isMobileMenuOpen = false" href="/blog" class="mb-3 block px-2 font-body text-lg font-medium text-white">Blog</a>
+          <a x-link :class="{'text-secondary': $router.is('/blog'), 'text-white': $router.not('/blog')}" href="/blog" @click="isMobileMenuOpen = false" class="mb-3 block px-2 font-body text-lg font-medium">Blog</a>
         </li>
 
         <li class="py-2">
-          <a x-link @click="isMobileMenuOpen = false" href="/contact" class="mb-3 block px-2 font-body text-lg font-medium text-white">Contact</a>
+          <a x-link :class="{'text-secondary': $router.is('/contact'), 'text-white': $router.not('/contact')}" href="/contact" @click="isMobileMenuOpen = false" class="mb-3 block px-2 font-body text-lg font-medium">Contact</a>
         </li>
       </ul>
     </nav>
