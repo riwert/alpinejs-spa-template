@@ -1,4 +1,4 @@
-This is an **[AlpineJS SPA template](https://github.com/riwert/alpinejs-spa-template)** with an intuitive file structure, simple features and included examples.
+This is an **[AlpineJS SPA template](https://github.com/riwert/alpinejs-spa-template)** with an intuitive folder structure, simple features and included examples.
 
 <br>
 

@@ -1,6 +1,6 @@
 # AlpineJS SPA template
 
-This is an **[AlpineJS SPA template](https://github.com/riwert/alpinejs-spa-template)** with an intuitive file structure, simple features and included examples.
+This is an **[AlpineJS SPA template](https://github.com/riwert/alpinejs-spa-template)** with an intuitive folder structure, simple features and included examples.
 
 The template includes the **[Alpine.js](https://github.com/alpinejs/alpine)** library, structured files with **[alpinejs-router](https://github.com/shaunlee/alpinejs-router)** for dynamic templates based on URLs, and **[alpinejs-head](https://github.com/markmead/alpinejs-head)** for meta updates. The design is based on the **[Tailwind Atlas theme](https://www.tailwindawesome.com/resources/atlas)**, and it functions as a SPA.
 
@@ -8,6 +8,7 @@ The template includes the **[Alpine.js](https://github.com/alpinejs/alpine)** li
 [alpinejs-spa.netlify.app](https://alpinejs-spa.netlify.app)
 
 ## Structure
+
 |No |Folder            |Description|
 |---|------------------|-----------|
 | 1 |```/components/```| - components dir to keep html files and inject it's contenten via x-include directive|
@@ -17,6 +18,7 @@ The template includes the **[Alpine.js](https://github.com/alpinejs/alpine)** li
 | 3 |```/partials/```  | - partial elements dir for separate html sections like header, footer, etc.|
 
 ## Custom directives
+
 - ```x-include``` - include custom content like components from file and inject response inside directive's element:
   - default without modifier returns file content as text/html,
   - ```.markdown``` modifier to parse markdown file content to html,
@@ -24,6 +26,7 @@ The template includes the **[Alpine.js](https://github.com/alpinejs/alpine)** li
   -  ```x-json:example="json/example.json"``` the response from a file will be available in ```$store.example``` in template and ```Alpine.store('example')``` in JS.
 
 ## Router templates example
+
 ```html
 <a x-link href="/hello/world">Hello World</a>
 
@@ -39,6 +42,7 @@ The template includes the **[Alpine.js](https://github.com/alpinejs/alpine)** li
 ```
 
 ## Meta updates in the head tag example
+
 ```html
 <script x-data x-head.json type="application/json">
   {
@@ -70,4 +74,5 @@ The template includes the **[Alpine.js](https://github.com/alpinejs/alpine)** li
 ```
 
 ## Disclaimer
+
 It's worth noticing that an SPA mode like this may not be the best for SEO. Perhaps using an SSR wrapper would work better for SEO.
