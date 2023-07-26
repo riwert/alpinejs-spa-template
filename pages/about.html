@@ -37,7 +37,7 @@
   </section>
 
   <section x-cloak x-include="components/hello-world.html" class="border-b border-grey-lighter py-8"></section>
-  <section x-cloak x-include.markdown="content/welcome.md" class="border-b border-grey-lighter py-8"></section>
+  <section x-cloak x-include.markdown="content/markdown-example.md" class="border-b border-grey-lighter py-8"></section>
 
   <section x-cloak x-json:example="json/example.json" class="border-b border-grey-lighter py-8">
     <div>
@@ -68,5 +68,7 @@
       </ul>
     </div>
   </section>
+
+  <section x-cloak x-include.markdown="README.md" class="markdown font-body font-light text-primary dark:text-white"></section>
 
 </section>

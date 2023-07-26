@@ -48,4 +48,10 @@ h3 {
   @apply font-body text-2xl md:text-3xl lg:text-4xl font-semibold text-primary dark:text-white;
 }
 
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+  @apply my-6 border-b border-grey-lighter;
+}
+
 /*# sourceMappingURL=main.css.map */

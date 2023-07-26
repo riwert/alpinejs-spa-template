@@ -3,6 +3,9 @@
     <img src="/assets/img/icon-story.png" alt="icon story" />
     <h3 class="ml-3 font-body text-2xl font-semibold text-primary dark:text-white">My Story</h3>
   </div>
-  <div x-cloak x-include.markdown="content/app-description.md" class="font-body font-light text-primary dark:text-white">
-  </div>
+  <section x-cloak x-include.markdown="content/app-description.md" class="font-body font-light text-primary dark:text-white"></section>
+  <a x-link href="/about" class="flex items-center font-body italic text-green transition-colors hover:text-secondary dark:text-green-light dark:hover:text-secondary">
+    Read more
+    <img src="/assets/img/long-arrow-right.png" class="ml-3" alt="arrow right" />
+  </a>
 </div>
